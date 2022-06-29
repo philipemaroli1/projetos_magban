@@ -118,9 +118,9 @@ User Function GMT100TOK()
     // EndIf
     
     //VALIDAR SE OS CAMPOS DO AUTÔNOMO ESTÃO PREENCHIDOS
-    If AllTrim(CESPECIE) == "RPA"
-		If !AllTrim(CTIPO) $ "B/D"
-			If Empty(SA2->A2_COD) .OR. Empty(SA2->A2_CBO) .OR. Empty((DTOS(SA2->A2_DTNASC))) .OR. Empty(SA2->A2_OCORREN) .OR. Empty(SA2->A2_CATEG) .OR. Empty(SA2->A2_CODNIT) .OR. Empty(SA2->A2_CATEFD)
+	If AllTrim(CTIPO) $ "N"
+        If AllTrim(CESPECIE) == "RPA"
+			If Empty(SA2->A2_COD) .OR. Empty(SA2->A2_CBO) .OR. Empty(DTOS(SA2->A2_DTNASC)) .OR. Empty(SA2->A2_OCORREN) .OR. Empty(SA2->A2_CATEG) .OR. Empty(SA2->A2_CODNIT) .OR. Empty(SA2->A2_CATEFD)
 				lRet := .F.				
 				cMsg	:= "No cadastro do Fornecedor alguns dos seguintes campos estao vazios: Cod CBO, Data nasc., Ocorrencia, Categ. SEFIP, Num Insc Aut ou Cat eSocial!"
 				cTitulo	:= "Validacao Campos RPA"
