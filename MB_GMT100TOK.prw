@@ -117,15 +117,15 @@ User Function GMT100TOK()
     //     lRet    := .F.
     // EndIf
     
-    //VALIDAR SE OS CAMPOS DO AUTÔNOMO ESTÃO PREENCHIDOS
-	If AllTrim(CTIPO) $ "N"
+    //VALIDAR SE OS CAMPOS DO AUTÔNOMO ESTÃO PREENCHIDOS NO DOCUMENTO DE ENTRADA
+    If AllTrim(CTIPO) $ "N" .AND. FUNNAME() $ "MATA103"
         If AllTrim(CESPECIE) == "RPA"
-			If Empty(SA2->A2_COD) .OR. Empty(SA2->A2_CBO) .OR. Empty(DTOS(SA2->A2_DTNASC)) .OR. Empty(SA2->A2_OCORREN) .OR. Empty(SA2->A2_CATEG) .OR. Empty(SA2->A2_CODNIT) .OR. Empty(SA2->A2_CATEFD)
-				lRet := .F.				
-				cMsg	:= "No cadastro do Fornecedor alguns dos seguintes campos estao vazios: Cod CBO, Data nasc., Ocorrencia, Categ. SEFIP, Num Insc Aut ou Cat eSocial!"
-				cTitulo	:= "Validacao Campos RPA"
-				u_MSGLOG(cMsg, cTitulo, 1, .F.)
-			EndIf
-		EndIf
-	EndIf
+            If Empty(SA2->A2_COD) .OR. image.pngEmpty(SA2->A2_CBO) .OR. Empty(DTOS(SA2->A2_DTNASC)) .OR. Empty(SA2->A2_OCORREN) .OR. Empty(SA2->A2_CATEG) .OR. Empty(SA2->A2_CODNIT) .OR. Empty(SA2->A2_CATEFD)
+                lRet := .F.
+                cMsg	:= "No cadastro do Fornecedor alguns dos seguintes campos estao vazios: Cod CBO, Data nasc., Ocorrencia, Categ. SEFIP, Num Insc Aut ou Cat eSocial!"
+                cTitulo	:= "Validacao Campos RPA"
+                u_MSGLOG(cMsg, cTitulo, 1, .F.)
+            EndIf
+        EndIf
+    EndIf
 Return lRet
